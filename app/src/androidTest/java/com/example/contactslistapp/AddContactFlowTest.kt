@@ -1,4 +1,3 @@
-// In AddContactFlowTest.kt
 package com.example.contactslistapp
 
 import androidx.test.core.app.ActivityScenario
@@ -7,14 +6,14 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.* // Import all from ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.*
 import com.example.contactslistapp.data.AppDatabase
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import org.hamcrest.CoreMatchers.allOf // Import allOf
+import org.hamcrest.CoreMatchers.allOf
 
 @RunWith(AndroidJUnit4::class)
 class AddContactFlowTest {
@@ -42,9 +41,6 @@ class AddContactFlowTest {
 
         onView(withId(R.id.button_save)).perform(click())
 
-        // 👇 REPLACE THE RECYCLERVIEW CHECK WITH THIS MORE RELIABLE ONE
-        // We are checking that the item at position 0 in the RecyclerView
-        // has a descendant view with the text "Ahmed Ali" and another with the phone number.
         onView(withId(R.id.recycler_view_contacts))
             .check(matches(atPosition(0, allOf(
                 hasDescendant(withText(newContactName)),

@@ -1,4 +1,3 @@
-// In a new file: RecyclerViewMatcher.kt
 package com.example.contactslistapp
 
 import android.view.View

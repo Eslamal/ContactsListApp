@@ -7,7 +7,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-// Add a dispatcher to the constructor with a default value
+
 class ContactViewModel(
     private val repository: ContactRepository,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
@@ -27,7 +27,7 @@ class ContactViewModel(
         _searchQuery.value = query
     }
 
-    // Use the injected dispatcher when launching coroutines
+
     fun addContact(contact: Contact) = viewModelScope.launch(dispatcher) {
         repository.insert(contact)
     }

@@ -26,40 +26,40 @@ class ContactViewModelTest {
 
     @Before
     fun setup() {
-        // We no longer need Dispatchers.setMain()
+
 
         repository = mock(ContactRepository::class.java)
 
-        // Stub the initial call to prevent crashes
+
         `when`(repository.allContacts).thenReturn(MutableLiveData(emptyList()))
 
-        // Pass the testDispatcher directly to the ViewModel
+
         viewModel = ContactViewModel(repository, testDispatcher)
     }
 
-    // We no longer need @After fun tearDown()
+
 
     @Test
     fun `deleteContact should call repository delete method`() = runTest {
-        // Given
+
         val contactToDelete = Contact(1, "Eslam", "123456789")
 
-        // When
+
         viewModel.deleteContact(contactToDelete)
 
-        // Then
+
         verify(repository).delete(contactToDelete)
     }
 
     @Test
     fun `addContact should call repository insert method`() = runTest {
-        // Given
+
         val contactToAdd = Contact(name = "New Contact", phone = "987654321")
 
-        // When
+
         viewModel.addContact(contactToAdd)
 
-        // Then
+
         verify(repository).insert(contactToAdd)
     }
 }
